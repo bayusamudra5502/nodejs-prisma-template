@@ -1,0 +1,21 @@
+{
+  "presets": ["@babel/preset-env", "@babel/preset-typescript"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "@": "./src",
+          "@controllers": ["./src/controllers"],
+          "@middlewares": ["./src/middlewares"],
+          "@models": ["./src/models"],
+          "@routes": ["./src/routes"],
+          "@utils": ["./src/utils"],
+          "@services": ["./src/services"]
+        },
+        "extensions": [".ts", ".js"]
+      }
+    ]
+  ]
+}

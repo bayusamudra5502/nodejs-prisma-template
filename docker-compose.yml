@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+    ports:
+      - 8080:80
+    env_file: .env
+    depends_on:
+      - database
+    networks:
+      - api_network
+  database:
+    ports:
+      - 5433:5432
+    image: postgres:latest
+    networks:
+      - app_network
+    volumes:
+      - db-app:/var/lib/postgresql/data
+    env_file: ./app/.env
+
+networks:
+  api_network:
+    name: api_network
+
+volumes:
+  db-app:
+    name: pga_app_pgsql
